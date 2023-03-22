@@ -53,7 +53,7 @@
                 <label>{{$post->username}}</label>
                 <p>{{$post->description}}</p>
                     
-                <img src="post/{{$post->image}}" alt="" height="300px" width="100%">
+                <img src="post/{{$post->image}}" alt="" height="300px" width="80%" style="object-fit: cover;">
             </div>
 
             @endforeach
