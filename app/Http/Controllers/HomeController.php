@@ -12,7 +12,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view ('home.index');
+        $post=Post::all();
+        return view ('home.index', compact('post'));
     }
 
     public function upload(Request $request)
@@ -26,9 +27,15 @@ class HomeController extends Controller
 
         //insert image to database    
         $image=$request ->image;
-        $imagename = time().'.'.$image->getClientOriginalExtension();
-        $request->image->move('post', $imagename);
+
+            if ($image) 
+            {
+                $imagename = time().'.'.$image->getClientOriginalExtension();
+                $request->image->move('post', $imagename);
+            }
+
         // ends here
+       
 
         $data->image = $imagename;
 
