@@ -42,5 +42,24 @@ class HomeController extends Controller
         $data -> save();
         return redirect() ->back();
     }
+
+    public function view_post()
+    {
+        $name= Auth::user() -> name;
+        $post = Post::where('username', '=', $name)->get();
+        return view('post_page', compact('post'));
+    }
+
+    public function delete_post($id)
+    {
+        $data=post::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+
+    public function update_post($id)
+    {
+        return view('update_post');
+    }
 }
 
